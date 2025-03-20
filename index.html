@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #hero{
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bghome.jpg');
+            background-size: cover;  
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
 
     <!-- Navbar -->
-    <nav class="bg-blue-600 text-white py-4 shadow-lg">
+    <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center px-4">
             <a href="index.html">
                 <h1 class="text-2xl font-bold">Library System</h1>
@@ -23,10 +31,12 @@
         </div>
     </nav>
     
-    <header class="bg-blue-500 text-white text-center py-20">
-        <h1 class="text-4xl font-bold">Welcome to Our Library</h1>
-        <p class="mt-4 text-lg">Explore a world of knowledge with our collection.</p>
-    </header>
+    <section id="hero" class="flex items-center justify-center min-h-screen text-center">
+        <div>
+            <h1 class="text-5xl font-bold text-[#FFF8E8]">Welcome to Our Library</h1>
+            <p class="mt-4 text-lg text-[#FFF8E8]">Explore a world of knowledge with our collection.</p>
+        </div>
+    </section>
 
     <section id="about" class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
         <h2 class="text-3xl font-semibold text-gray-800">About Us</h2>

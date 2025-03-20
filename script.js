@@ -3,7 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const bookForm = document.getElementById("bookForm");
-const bookTable = document.getElementById("manageBooksTable");
+const booksContainer = document.getElementById("booksContainer");
+const editModal = document.getElementById("editModal");
+const addModal = document.getElementById("addModal");
+const searchInput = document.getElementById("searchInput");
+
+let editingIndex = null;
 
 function getBooks() {
     return JSON.parse(localStorage.getItem("books")) || [];
@@ -11,8 +16,21 @@ function getBooks() {
 
 function saveBooks(books) {
     localStorage.setItem("books", JSON.stringify(books));
+    loadBooks();
 }
 
+// Open Add Modal
+function openAddModal() {
+    addModal.classList.remove("hidden");
+}
+
+// Close Add Modal
+function closeAddModal() {
+    addModal.classList.add("hidden");
+    bookForm.reset();
+}
+
+// Submit New Book
 bookForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -23,7 +41,7 @@ bookForm.addEventListener("submit", function (e) {
     const imageFile = document.getElementById("image").files[0];
 
     if (!title || !author || !isbn) {
-        alert("Please fill in all fields.");
+        Swal.fire("Error", "Please fill in all fields.", "error");
         return;
     }
 
@@ -39,56 +57,118 @@ bookForm.addEventListener("submit", function (e) {
         addBook(title, author, isbn, status, imageData);
     }
 
-    bookForm.reset();
+    closeAddModal();
+    Swal.fire("Success", "You have successfully added a book!", "success");
 });
 
 function addBook(title, author, isbn, status, imageData) {
     const books = getBooks();
     books.push({ title, author, isbn, status, image: imageData });
     saveBooks(books);
-    loadBooks();
 }
 
+// Load Books and Display in Container
 function loadBooks() {
-    bookTable.innerHTML = "";
+    booksContainer.innerHTML = "";
     const books = getBooks();
 
     books.forEach((book, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td class="px-4 py-2">
-                ${book.image ? `<img src="${book.image}" class="w-16 h-20 object-cover rounded">` : "No Image"}
-            </td>
-            <td class="px-4 py-2">${book.title}</td>
-            <td class="px-4 py-2">${book.author}</td>
-            <td class="px-4 py-2">${book.isbn}</td>
-            <td class="px-4 py-2">${book.status}</td>
-            <td class="px-4 py-2">
-                <button onclick="editBook(${index})" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</button>
-                <button onclick="deleteBook(${index})" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
-            </td>
-        `;
-        bookTable.appendChild(row);
+        booksContainer.innerHTML += `
+            <div class="p-4 border rounded-lg shadow-md bg-gray-200">
+                <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
+                <h3 class="text-lg font-semibold">${book.title}</h3>
+                <p class="text-gray-700">${book.author}</p>
+                <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
+                <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+            </div>`;
     });
 }
 
-function deleteBook(index) {
-    let books = getBooks();
-    books.splice(index, 1);
-    saveBooks(books);
-    loadBooks();
-}
-
-function editBook(index) {
+// Open Edit Modal
+function openEditModal(index) {
     const books = getBooks();
     const book = books[index];
 
-    document.getElementById("title").value = book.title;
-    document.getElementById("author").value = book.author;
-    document.getElementById("isbn").value = book.isbn;
-    document.getElementById("status").value = book.status;
+    document.getElementById("editTitle").value = book.title;
+    document.getElementById("editAuthor").value = book.author;
+    document.getElementById("editISBN").value = book.isbn;
+    document.getElementById("editStatus").value = book.status;
 
-    books.splice(index, 1);
+    editingIndex = index;
+    editModal.classList.remove("hidden");
+}
+
+// Update Book
+function updateBook() {
+    const books = getBooks();
+
+    books[editingIndex].title = document.getElementById("editTitle").value;
+    books[editingIndex].author = document.getElementById("editAuthor").value;
+    books[editingIndex].isbn = document.getElementById("editISBN").value;
+    books[editingIndex].status = document.getElementById("editStatus").value;
+
     saveBooks(books);
-    loadBooks();
+    closeModal();
+
+    Swal.fire({
+        title: "Success",
+        text: "Book has been updated!",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false
+    });
+}
+
+// Close Edit Modal
+function closeModal() {
+    editModal.classList.add("hidden");
+}
+
+// Delete Book with Confirmation
+function deleteBook(index) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to recover this book!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let books = getBooks();
+            books.splice(index, 1);
+            saveBooks(books);
+            Swal.fire("Deleted!", "The book has been deleted.", "success");
+        }
+    });
+}
+
+// Search Books in Real-Time
+function searchBooks() {
+    const query = searchInput.value.toLowerCase();
+    const books = getBooks();
+    booksContainer.innerHTML = "";
+
+    books
+        .filter(book => 
+            book.title.toLowerCase().includes(query) ||
+            book.author.toLowerCase().includes(query) ||
+            book.isbn.includes(query)
+        )
+        .forEach((book, index) => {
+            booksContainer.innerHTML += `
+                <div class="p-4 border rounded-lg shadow-md bg-gray-200">
+                    <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
+                    <h3 class="text-lg font-semibold">${book.title}</h3>
+                    <p class="text-gray-700">${book.author}</p>
+                    <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
+                    <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
+                </div>`;
+        });
+}
+
+// Go Back
+function goBack() {
+    window.history.back();
 }

@@ -1,60 +1,80 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-gray-100">
-
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <h1 class="text-2xl font-bold">Library System</h1>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:underline">Home</a></li>
-                <li><a href="book.html" class="hover:underline">Books</a></li>
-                <li><a href="manage.html" class="hover:underline">Manage</a></li>
-                <li><a href="contact.html" class="hover:underline">Contact</a></li>
-            </ul>
+    <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg relative">
+        <div class="flex justify-between items-center mb-6">
+            <button onclick="goBack()" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+                Back
+            </button>
+            <h2 class="text-3xl font-semibold text-gray-800">Manage Books</h2>
+            <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                Add Book
+            </button>
         </div>
-    </nav>
 
-    <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Manage Books</h2>
+        <!-- Add Book Modal -->
+        <div id="addModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                <h3 class="text-xl font-semibold mb-4">Add Book</h3>
+                <form id="bookForm">
+                    <input type="text" id="title" placeholder="Book Title" required class="p-2 border rounded w-full mb-2">
+                    <input type="text" id="author" placeholder="Author" required class="p-2 border rounded w-full mb-2">
+                    <input type="text" id="isbn" placeholder="ISBN" required class="p-2 border rounded w-full mb-2">
+                    <input type="file" id="image" accept="image/*" class="p-2 border rounded w-full mb-2">
+                    <select id="status" class="p-2 border rounded w-full mb-2">
+                        <option value="Available">Available</option>
+                        <option value="Checked Out">Checked Out</option>
+                    </select>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+                            Add Book
+                        </button>
+                        <button type="button" onclick="closeAddModal()" class="ml-2 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="mb-4">
+            <input type="text" id="searchInput" placeholder="Search books..." 
+                class="w-full p-2 border rounded" oninput="searchBooks()">
+        </div>
 
-        <form id="bookForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input type="text" id="title" placeholder="Book Title" required class="p-2 border rounded">
-            <input type="text" id="author" placeholder="Author" required class="p-2 border rounded">
-            <input type="text" id="isbn" placeholder="ISBN" required class="p-2 border rounded">
-            <input type="file" id="image" accept="image/*" class="p-2 border rounded">
-            <select id="status" class="p-2 border rounded">
+
+        <!-- Books Container -->
+        <div id="booksContainer" class="grid grid-cols-3 gap-4 mt-6">
+            <!-- Books will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h3 class="text-xl font-semibold mb-4">Edit Book</h3>
+            <input type="text" id="editTitle" class="p-2 border rounded w-full mb-2">
+            <input type="text" id="editAuthor" class="p-2 border rounded w-full mb-2">
+            <input type="text" id="editISBN" class="p-2 border rounded w-full mb-2">
+            <select id="editStatus" class="p-2 border rounded w-full mb-2">
                 <option value="Available">Available</option>
                 <option value="Checked Out">Checked Out</option>
             </select>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                Add Book
-            </button>
-        </form>
-
-        <div class="overflow-x-auto mt-6">
-            <table class="min-w-full bg-white border rounded-lg shadow-md">
-                <thead>
-                    <tr class="bg-blue-500 text-white">
-                        <th class="px-4 py-2">Image</th>
-                        <th class="px-4 py-2">Title</th>
-                        <th class="px-4 py-2">Author</th>
-                        <th class="px-4 py-2">ISBN</th>
-                        <th class="px-4 py-2">Status</th>
-                        <th class="px-4 py-2">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="manageBooksTable">
-                </tbody>
-            </table>
+            <div class="flex justify-end">
+                <button onclick="updateBook()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Update</button>
+                <button onclick="closeModal()" class="ml-2 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Cancel</button>
+            </div>
         </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

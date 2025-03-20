@@ -37,10 +37,11 @@ bookForm.addEventListener("submit", function (e) {
     const title = document.getElementById("title").value.trim();
     const author = document.getElementById("author").value.trim();
     const isbn = document.getElementById("isbn").value.trim();
+    const description = document.getElementById("description").value.trim();
     const status = document.getElementById("status").value;
     const imageFile = document.getElementById("image").files[0];
 
-    if (!title || !author || !isbn) {
+    if (!title || !author || !isbn || !description) {
         Swal.fire("Error", "Please fill in all fields.", "error");
         return;
     }
@@ -51,19 +52,19 @@ bookForm.addEventListener("submit", function (e) {
         reader.readAsDataURL(imageFile);
         reader.onload = function () {
             imageData = reader.result;
-            addBook(title, author, isbn, status, imageData);
+            addBook(title, author, isbn, description, status, imageData);
         };
     } else {
-        addBook(title, author, isbn, status, imageData);
+        addBook(title, author, isbn, description, status, imageData);
     }
 
     closeAddModal();
     Swal.fire("Success", "You have successfully added a book!", "success");
 });
 
-function addBook(title, author, isbn, status, imageData) {
+function addBook(title, author, isbn, description, status, imageData) {
     const books = getBooks();
-    books.push({ title, author, isbn, status, image: imageData });
+    books.push({ title, author, isbn, description, status, image: imageData });
     saveBooks(books);
 }
 
@@ -78,6 +79,7 @@ function loadBooks() {
                 <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
                 <h3 class="text-lg font-semibold">${book.title}</h3>
                 <p class="text-gray-700">${book.author}</p>
+                <p class="text-sm text-gray-600 mb-2">${book.description}</p>
                 <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
                 <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
             </div>`;
@@ -92,6 +94,7 @@ function openEditModal(index) {
     document.getElementById("editTitle").value = book.title;
     document.getElementById("editAuthor").value = book.author;
     document.getElementById("editISBN").value = book.isbn;
+    document.getElementById("editDescription").value = book.description;
     document.getElementById("editStatus").value = book.status;
 
     editingIndex = index;
@@ -105,6 +108,7 @@ function updateBook() {
     books[editingIndex].title = document.getElementById("editTitle").value;
     books[editingIndex].author = document.getElementById("editAuthor").value;
     books[editingIndex].isbn = document.getElementById("editISBN").value;
+    books[editingIndex].description = document.getElementById("editDescription").value;
     books[editingIndex].status = document.getElementById("editStatus").value;
 
     saveBooks(books);
@@ -154,7 +158,8 @@ function searchBooks() {
         .filter(book => 
             book.title.toLowerCase().includes(query) ||
             book.author.toLowerCase().includes(query) ||
-            book.isbn.includes(query)
+            book.isbn.includes(query) ||
+            book.description.toLowerCase().includes(query)
         )
         .forEach((book, index) => {
             booksContainer.innerHTML += `
@@ -162,6 +167,7 @@ function searchBooks() {
                     <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
                     <h3 class="text-lg font-semibold">${book.title}</h3>
                     <p class="text-gray-700">${book.author}</p>
+                    <p class="text-sm text-gray-600 mb-2">${book.description}</p>
                     <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
                     <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
                 </div>`;

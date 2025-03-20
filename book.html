@@ -6,56 +6,64 @@
     <title>Library Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="index.html">
-                <h1 class="text-2xl font-bold">Library System</h1>
-            </a>
-            <ul class="flex space-x-6">
-                <li><a href="home.html" class="hover:text-yellow-300">Home</a></li>
-                <li><a href="book.html" class="hover:text-yellow-300">Books</a></li>
-                <li><a href="manage.html" class="hover:text-yellow-300 ">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-yellow-300 ">Contact</a></li>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="index.html" class="text-2xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="home.html" class="hover:text-lime-800 transition">Home</a></li>
+                <li><a href="book.html" class="hover:text-lime-800 transition">Books</a></li>
+                <li><a href="manage.html" class="hover:text-lime-800 transition">Manage</a></li>
+                <li><a href="contact.html" class="hover:text-lime-800 transition">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
-    
-    <!-- Book List Section -->
-    <div class="container mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Library Books</h2>
 
-        <!-- Search Bar -->
-        <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-2 w-full mb-4 rounded" onkeyup="searchBooks()">
-
-        <!-- Books Display Container -->
-        <div id="booksContainer" class="grid grid-cols-3 gap-6">
-            <!-- Books will be dynamically added here -->
+    <div class="flex-grow">
+        <div class="container mx-auto bg-white p-8 rounded-lg shadow-md mt-12 max-w-4xl text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">Library Books</h2>
+            <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-3 w-full rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 transition" onkeyup="searchBooks()">
+            <div id="booksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
         </div>
     </div>
 
     <!-- Book Modal -->
     <div id="bookModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex justify-center items-center">
-        <div class="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
-            <div class="flex justify-between items-center">
-                <h3 class="text-2xl font-semibold text-center">Book Details</h3>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 text-2xl cursor-pointer">&times;</button>
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-3xl font-bold text-center flex-1">Book Details</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             </div>
-            <div class="flex mt-4 space-x-6">
-                <img id="modalBookImage" src="" class="w-48 h-60 object-cover rounded-lg shadow-md">
-                
-                <div class="flex-1 text-left">
-                    <h3 class="text-2xl font-bold text-gray-900" id="modalBookTitle"></h3>
-                    <p class="text-gray-700 text-lg mt-2" id="modalBookAuthor"></p>
-                    <p class="text-gray-700 mt-2">ISBN: <span id="modalBookISBN" class="font-semibold"></span></p>
-                    <p class="text-gray-700 mt-2">Availability: <span id="modalBookAvailability" class="font-semibold"></span></p>
-                </div>
-            </div>
+            <table class="w-full border-collapse border border-gray-300">
+                <tbody>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2 font-semibold">Title</td>
+                        <td class="border border-gray-300 px-4 py-2" id="modalBookTitle"></td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2 font-semibold">Author</td>
+                        <td class="border border-gray-300 px-4 py-2" id="modalBookAuthor"></td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2 font-semibold">Description</td>
+                        <td class="border border-gray-300 px-4 py-2" id="modalBookDescription"></td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2 font-semibold">ISBN</td>
+                        <td class="border border-gray-300 px-4 py-2" id="modalBookISBN"></td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2 font-semibold">Availability</td>
+                        <td class="border border-gray-300 px-4 py-2" id="modalBookAvailability"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <footer class="bg-[#AAB396] text-white text-center py-4 mt-auto">
+        <p class="text-lg">&copy; 2025 Library System. All Rights Reserved.</p>
+    </footer>
 
     <script src="book.js"></script>
 </body>

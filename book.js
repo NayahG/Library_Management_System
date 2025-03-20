@@ -23,11 +23,21 @@ function openModal(index) {
     const books = getBooks();
     const book = books[index];
 
-    document.getElementById("modalBookImage").src = book.image ? book.image : "https://via.placeholder.com/150";
     document.getElementById("modalBookTitle").textContent = book.title;
-    document.getElementById("modalBookAuthor").textContent = "Author: " + book.author;
+    document.getElementById("modalBookAuthor").textContent = book.author;
+    document.getElementById("modalBookDescription").textContent = book.description;
     document.getElementById("modalBookISBN").textContent = book.isbn;
-    document.getElementById("modalBookAvailability").textContent = book.status;
+
+    const availabilityElement = document.getElementById("modalBookAvailability");
+    availabilityElement.textContent = book.status;
+
+    if (book.status.toLowerCase() === "available") {
+        availabilityElement.classList.remove("text-red-600");
+        availabilityElement.classList.add("text-green-600");
+    } else {
+        availabilityElement.classList.remove("text-green-600");
+        availabilityElement.classList.add("text-red-600");
+    }
 
     document.getElementById("bookModal").classList.remove("hidden");
 }
@@ -42,7 +52,9 @@ function searchBooks() {
     container.innerHTML = "";
 
     const books = getBooks().filter(book =>
-        book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)
+        book.title.toLowerCase().includes(query) || 
+        book.author.toLowerCase().includes(query) || 
+        book.description.toLowerCase().includes(query)
     );
 
     books.forEach((book, index) => {

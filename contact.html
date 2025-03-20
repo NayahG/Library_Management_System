@@ -5,49 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Library Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="bg-blue-600 text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="index.html">
-                <h1 class="text-2xl font-bold">Library System</h1>
-            </a>
-            <ul class="flex space-x-6">
-                <li><a href="home.html" class="hover:text-yellow-300">Home</a></li>
-                <li><a href="book.html" class="hover:text-yellow-300">Books</a></li>
-                <li><a href="manage.html" class="hover:text-yellow-300 ">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-yellow-300 ">Contact</a></li>
+    <nav class="bg-[#AAB396] text-white py-3 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="index.html" class="text-xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <ul class="flex space-x-5 items-center">
+                <li><a href="home.html" class="hover:text-lime-800 transition">Home</a></li>
+                <li><a href="book.html" class="hover:text-lime-800 transition">Books</a></li>
+                <li><a href="manage.html" class="hover:text-lime-800 transition">Manage</a></li>
+                <li><a href="contact.html" class="hover:text-lime-800 transition">Contact</a></li>
+                <li>
+                    <button onclick="logout()" class="bg-red-500 px-3 py-1.5 rounded-lg flex items-center hover:bg-red-600 transition">
+                        <i class="fas fa-sign-out-alt mr-1"></i>
+                        <span>Logout</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
-    
 
     <!-- Contact Section -->
-    <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg max-w-2xl">
-        <h2 class="text-3xl font-semibold text-gray-800 text-center">Contact Us</h2>
-        <p class="text-center text-gray-600 mt-2">Have a question? Reach out to us!</p>
+    <div class="container mx-auto mt-8 p-6 bg-white shadow-md rounded-lg max-w-lg text-center">
+        <h2 class="text-2xl font-semibold text-gray-800">Contact Us</h2>
+        <p class="text-gray-600 text-sm mt-1">Have a question? Reach out to us!</p>
 
-        <form class="mt-6">
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
-                <input type="text" class="w-full p-2 border rounded" placeholder="Enter your name" required>
+        <form class="mt-4">
+            <div class="mb-3 text-left">
+                <label class="block text-gray-700 font-medium text-sm mb-1">Full Name</label>
+                <input type="text" class="w-full p-2 border rounded text-sm" placeholder="Enter your name" required>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2">Email</label>
-                <input type="email" class="w-full p-2 border rounded" placeholder="Enter your email" required>
+            <div class="mb-3 text-left">
+                <label class="block text-gray-700 font-medium text-sm mb-1">Email</label>
+                <input type="email" class="w-full p-2 border rounded text-sm" placeholder="Enter your email" required>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium mb-2">Message</label>
-                <textarea class="w-full p-2 border rounded h-32" placeholder="Type your message..." required></textarea>
+            <div class="mb-3 text-left">
+                <label class="text-gray-700 font-medium text-sm mb-1">Message</label>
+                <textarea class="w-full p-2 border rounded text-sm h-24" placeholder="Type your message..." required></textarea>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Send Message</button>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm">Send Message</button>
         </form>
+
+        <!-- Social Media Links -->
+        <div class="mt-4">
+            <h3 class="text-lg font-semibold text-gray-800">Connect with us</h3>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="https://twitter.com" target="_blank" class="text-blue-500 text-xl hover:text-blue-700 transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:yourlibrary@gmail.com" class="text-red-600 text-xl hover:text-red-800 transition">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://m.me/yourlibrary" target="_blank" class="text-blue-700 text-xl hover:text-blue-900 transition">
+                    <i class="fab fa-facebook-messenger"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourlibrary" target="_blank" class="text-blue-800 text-xl hover:text-blue-900 transition">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#AAB396] text-white text-center py-3 mt-auto text-sm">
+        <p>&copy; 2025 Library System. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Logout Script -->
+    <script src="logout.js"></script>
 
 </body>
 </html>

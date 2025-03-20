@@ -15,7 +15,7 @@
                 <h1 class="text-2xl font-bold">Library System</h1>
             </a>
             <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
+                <li><a href="home.html" class="hover:text-yellow-300">Home</a></li>
                 <li><a href="book.html" class="hover:text-yellow-300">Books</a></li>
                 <li><a href="manage.html" class="hover:text-yellow-300 ">Manage</a></li>
                 <li><a href="contact.html" class="hover:text-yellow-300 ">Contact</a></li>
@@ -23,22 +23,26 @@
         </div>
     </nav>
     
-
+    
+    <!-- Book List Section -->
     <div class="container mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
         <h2 class="text-3xl font-bold text-gray-800 mb-4">Library Books</h2>
 
+        <!-- Search Bar -->
         <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-2 w-full mb-4 rounded" onkeyup="searchBooks()">
 
+        <!-- Books Display Container -->
         <div id="booksContainer" class="grid grid-cols-3 gap-6">
-
+            <!-- Books will be dynamically added here -->
         </div>
     </div>
 
+    <!-- Book Modal -->
     <div id="bookModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex justify-center items-center">
         <div class="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
             <div class="flex justify-between items-center">
                 <h3 class="text-2xl font-semibold text-center">Book Details</h3>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 text-2xl cursor-pointer">&times;</button>
             </div>
             <div class="flex mt-4 space-x-6">
                 <img id="modalBookImage" src="" class="w-48 h-60 object-cover rounded-lg shadow-md">

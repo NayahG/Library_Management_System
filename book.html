@@ -5,30 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sigmar&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
-    <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
+<body class="bg-[#FFF8E8] flex flex-col min-h-screen">
+    <nav class="bg-[#AAB396] text-white py-4 shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center px-6">
-            <a href="index.html" class="text-2xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <div class="flex items-center">
+                <img src="img/booktrack.png" alt="Logo" class="h-10 w-auto"> 
+                <span class="text-2xl font-[Sigmar] text-[#674636] ml-0">BookTrack</span>
+            </div>
             <ul class="flex space-x-6 items-center">
-                <li><a href="home.html" class="hover:text-lime-800 transition">Home</a></li>
-                <li><a href="book.html" class="hover:text-lime-800 transition">Books</a></li>
-                <li><a href="manage.html" class="hover:text-lime-800 transition">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-lime-800 transition">Contact</a></li>
+                <li>
+                    <a href="home.html" class="font-[Poppins] text-xl hover:text-[#674636]">Home</a>
+                </li>
+                <li>
+                    <a href="book.html" class="font-[Poppins] text-xl text-[#FFFFFF] border-b-2 border-[#FFFFFF]">Books</a>
+                </li>
+                <li>
+                    <a href="manage.html" class="font-[Poppins] text-xl hover:text-[#674636]">Manage</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="font-[Poppins] text-xl hover:text-[#674636]">Contact</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <button onclick="logout()" class=" text-2xl hover:text-[#A31D1D] transition">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>                        
+                    </a>
+                    
+                </li>
             </ul>
         </div>
     </nav>
 
-    <div class="flex-grow">
-        <div class="container mx-auto bg-white p-8 rounded-lg shadow-md mt-12 max-w-4xl text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">Library Books</h2>
-            <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-3 w-full rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 transition" onkeyup="searchBooks()">
+    <div class="flex-grow w-full ">
+        <div class="container mx-auto bg-white  p-8 rounded-lg shadow-md mt-20 max-w-5xl text-center">
+            <h2 class="text-4xl font-bold font-[Poppins] text-[#674636] mb-6">Library Books</h2>
+            <input type="text" id="searchBar" placeholder="Search for a book..." 
+            class="border-2 border-[#674636] p-3 w-full rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-[#674636] transition" 
+            onkeyup="searchBooks()">
             <div id="booksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
         </div>
     </div>
 
-    <!-- Book Modal -->
-    <div id="bookModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div id="bookModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex justify-center items-center font-[Poppins]">
         <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-3xl font-bold text-center flex-1">Book Details</h3>
@@ -61,8 +85,8 @@
         </div>
     </div>
 
-    <footer class="bg-[#AAB396] text-white text-center py-4 mt-auto">
-        <p class="text-lg">&copy; 2025 Library System. All Rights Reserved.</p>
+    <footer class="bg-[#AAB396] text-white text-center py-4 mt-auto font-[poppins]">
+        <p class="text-lg">&copy; 2025 BookTrack. All Rights Reserved.</p>
     </footer>
 
     <script src="book.js"></script>

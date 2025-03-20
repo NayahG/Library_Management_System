@@ -14,7 +14,7 @@ function displayBooks() {
                 <img src="${book.image ? book.image : "https://via.placeholder.com/150"}" alt="${book.title}" class="w-full h-40 object-cover mb-2 rounded">
                 <h3 class="text-lg font-semibold">${book.title}</h3>
                 <p class="text-gray-700">${book.author}</p>
-                <button onclick="openModal(${index})" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">View Details</button>
+                <button onclick="openModal(${index})" class="mt-2 bg-[#674636] text-[#FFF8E8] px-4 py-2 rounded hover:bg-[#FFF8E8] hover:text-[#674636] hover:border hover:border-[#674636] font-[Poppins]">View Details</button>
             </div>`;
     });
 }

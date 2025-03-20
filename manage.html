@@ -6,52 +6,62 @@
     <title>Manage Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sigmar&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-[#FFF8E8] flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
+    <nav class="bg-[#AAB396] text-white py-4 shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center px-6">
-            <a href="index.html" class="text-2xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <div class="flex items-center">
+                <img src="img/booktrack.png" alt="Logo" class="h-10 w-auto"> 
+                <span class="text-2xl font-[Sigmar] text-[#674636] ml-0">BookTrack</span>
+            </div>
             <ul class="flex space-x-6 items-center">
-                <li><a href="home.html" class="hover:text-lime-800 transition">Home</a></li>
-                <li><a href="book.html" class="hover:text-lime-800 transition">Books</a></li>
-                <li><a href="manage.html" class="hover:text-lime-800 transition">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-lime-800 transition">Contact</a></li>
                 <li>
-                    <button onclick="logout()" class="bg-red-500 px-2 py-2 rounded-lg flex items-center hover:bg-red-600 transition">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </button>
+                    <a href="home.html" class="font-[Poppins] text-xl hover:text-[#674636]">Home</a>
+                </li>
+                <li>
+                    <a href="book.html" class="font-[Poppins] text-xl hover:text-[#674636]">Books</a>
+                </li>
+                <li>
+                    <a href="manage.html" class="font-[Poppins] text-xl text-[#FFFFFF] border-b-2 border-[#FFFFFF]">Manage</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="font-[Poppins] text-xl hover:text-[#674636]">Contact</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <button onclick="logout()" class=" text-2xl hover:text-[#A31D1D] transition">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>                        
+                    </a>
+                    
                 </li>
             </ul>
         </div>
     </nav>
-
-    <!-- Main Content Wrapper -->
-    <div class="flex-grow">
+    <div class="flex-grow mt-12 font-[Poppins]">
         <div class="container mx-auto mt-12 p-8 bg-white shadow-md rounded-lg max-w-4xl text-center">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-4xl font-bold text-gray-800">Manage Books</h2>
-                <button onclick="openAddModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                <h2 class="text-4xl font-bold text-[#674636]">Manage Books</h2>
+                <button onclick="openAddModal()" class="bg-[#674636] text-[#FFF8E8] px-4 py-2 rounded hover:bg-[#FFF8E8] hover:text-[#674636] hover:border hover:border-[#674636] transition">
                     Add Book
                 </button>
             </div>
 
-            <!-- Search Bar -->
-            <input type="text" id="searchInput" placeholder="Search books..." class="w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 transition" oninput="searchBooks()">
+            <input type="text" id="searchInput" placeholder="Search books..." class=" border-2 border-[#674636] w-full p-3 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 transition" oninput="searchBooks()">
 
-            <!-- Books Container -->
             <div id="booksContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                <!-- Books will be dynamically added here -->
             </div>
         </div>
     </div>
 
-    <!-- Add Book Modal -->
-    <div id="addModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
+    <div id="addModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden font-[Poppins]">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-            <h2 class="text-2xl font-bold mb-4">Add Book</h2>
+            <h2 class="text-2xl font-bold mb-4 ">Add Book</h2>
             <form id="bookForm">
                 <input type="text" id="title" placeholder="Title" class="w-full p-2 mb-2 border rounded">
                 <input type="text" id="author" placeholder="Author" class="w-full p-2 mb-2 border rounded">
@@ -68,7 +78,6 @@
         </div>
     </div>
 
-    <!-- Edit Book Modal -->
     <div id="editModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
             <h2 class="text-2xl font-bold mb-4">Edit Book</h2>
@@ -80,14 +89,14 @@
                 <option value="Available">Available</option>
                 <option value="Unavailable">Unavailable</option>
             </select>
-            <button onclick="updateBook()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
+            <button onclick="updateBook()" class="bg-[#706D54] text-white px-4 py-2 rounded hover:bg-lime-800">Update</button>
             <button onclick="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Cancel</button>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-[#AAB396] text-white text-center py-4 mt-auto">
-        <p class="text-lg">&copy; 2025 Library System. All Rights Reserved.</p>
+    <footer class="bg-[#AAB396] text-white text-center py-4 mt-auto font-[poppins]">
+        <p class="text-lg">&copy; 2025 BookTrack. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>

@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us - Library Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Library System</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="book.html" class="hover:underline">Books</a></li>
+                <li><a href="manage.html" class="hover:underline">Manage</a></li>
+                <li><a href="contact.html" class="hover:underline">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <div class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg max-w-2xl">
+        <h2 class="text-3xl font-semibold text-gray-800 text-center">Contact Us</h2>
+        <p class="text-center text-gray-600 mt-2">Have a question? Reach out to us!</p>
+
+        <form class="mt-6">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                <input type="text" class="w-full p-2 border rounded" placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                <input type="email" class="w-full p-2 border rounded" placeholder="Enter your email" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium mb-2">Message</label>
+                <textarea class="w-full p-2 border rounded h-32" placeholder="Type your message..." required></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Send Message</button>
+        </form>
+    </div>
+
 </body>
 </html>

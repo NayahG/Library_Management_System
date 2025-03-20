@@ -3,42 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Details</title>
+    <title>Library Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-bold mb-4">Library Books</h2>
-        
-        <!-- Search Bar -->
-        <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-2 w-full mb-4 rounded" onkeyup="searchBooks()">
-        
-        <!-- Book Cards Container -->
-        <div id="booksContainer" class="grid grid-cols-3 gap-4">
-            <!-- Book cards will be dynamically added here -->
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Library System</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="book.html" class="hover:underline">Books</a></li>
+                <li><a href="manage.html" class="hover:underline">Manage</a></li>
+                <li><a href="contact.html" class="hover:underline">Contact</a></li>
+            </ul>
         </div>
-        
-        <!-- Book Details Table (Initially Hidden) -->
-        <div id="bookDetails" class="hidden mt-6">
-            <h3 class="text-xl font-semibold mb-2">Book Details</h3>
-            <table class="w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border p-2">Title</th>
-                        <th class="border p-2">Author</th>
-                        <th class="border p-2">ISBN</th>
-                        <th class="border p-2">Availability</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border p-2" id="tableBookTitle"></td>
-                        <td class="border p-2" id="tableBookAuthor"></td>
-                        <td class="border p-2" id="tableBookISBN"></td>
-                        <td class="border p-2" id="tableBookAvailability"></td>
-                    </tr>
-                </tbody>
-            </table>
+    </nav>
+
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Library Books</h2>
+
+        <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-2 w-full mb-4 rounded" onkeyup="searchBooks()">
+
+        <div id="booksContainer" class="grid grid-cols-3 gap-6">
+
+        </div>
+    </div>
+
+    <div id="bookModal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-3xl w-full">
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-semibold text-center">Book Details</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+            </div>
+            <div class="flex mt-4 space-x-6">
+                <img id="modalBookImage" src="" class="w-48 h-60 object-cover rounded-lg shadow-md">
+                
+                <div class="flex-1 text-left">
+                    <h3 class="text-2xl font-bold text-gray-900" id="modalBookTitle"></h3>
+                    <p class="text-gray-700 text-lg mt-2" id="modalBookAuthor"></p>
+                    <p class="text-gray-700 mt-2">ISBN: <span id="modalBookISBN" class="font-semibold"></span></p>
+                    <p class="text-gray-700 mt-2">Availability: <span id="modalBookAvailability" class="font-semibold"></span></p>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-gray-100 p-6">
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Library Books</h2>
+        
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" placeholder="Search for a book..." class="border p-2 w-full mb-4 rounded" onkeyup="searchBooks()">
+        
+        <!-- Book Cards Container -->
+        <div id="booksContainer" class="grid grid-cols-3 gap-4">
+            <!-- Book cards will be dynamically added here -->
+        </div>
+        
+        <!-- Book Details Table (Initially Hidden) -->
+        <div id="bookDetails" class="hidden mt-6">
+            <h3 class="text-xl font-semibold mb-2">Book Details</h3>
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border p-2">Title</th>
+                        <th class="border p-2">Author</th>
+                        <th class="border p-2">ISBN</th>
+                        <th class="border p-2">Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border p-2" id="tableBookTitle"></td>
+                        <td class="border p-2" id="tableBookAuthor"></td>
+                        <td class="border p-2" id="tableBookISBN"></td>
+                        <td class="border p-2" id="tableBookAvailability"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="book.js"></script>
 </body>
 </html>

@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="book.html">Books</a></li>
-            <li><a href="manage.html">Manage Books</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+<body class="bg-gray-100">
+
+    <nav class="bg-blue-600 text-white py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold">Library System</h1>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="book.html" class="hover:underline">Books</a></li>
+                <li><a href="manage.html" class="hover:underline">Manage</a></li>
+                <li><a href="contact.html" class="hover:underline">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-    <header>
-        <h1>Welcome to Our Library</h1>
-        <p>Explore a world of knowledge with our collection.</p>
+
+    <header class="bg-blue-500 text-white text-center py-20">
+        <h1 class="text-4xl font-bold">Welcome to Our Library</h1>
+        <p class="mt-4 text-lg">Explore a world of knowledge with our collection.</p>
     </header>
-    <section id="about">
-        <h2>About Us</h2>
-        <p>Our library provides a diverse collection of books, ensuring accessibility and convenience for all readers.</p>
+
+    <section id="about" class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <h2 class="text-3xl font-semibold text-gray-800">About Us</h2>
+        <p class="mt-4 text-gray-600">Our library provides a diverse collection of books, ensuring accessibility and convenience for all readers.</p>
     </section>
+
 </body>
 </html>

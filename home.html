@@ -5,81 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sigmar&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         #hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/bghome.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            url('img/bghome.jpg');          
             background-size: cover;  
             background-position: center; 
             background-repeat: no-repeat;
         }
+
     </style>
 </head>
 <body class="bg-gray-100">
 
-    <!-- Navbar -->
-    <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
+    <nav class="bg-[#AAB396] text-white py-4 shadow-lg fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center px-6">
-            <a href="index.html" class="text-2xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <div class="flex items-center space-x-3">
+                <img src="img/booktrack.png" alt="Logo" class="h-10 w-auto"> 
+                <span class="text-2xl font-[Sigmar] text-[#674636] ml-0">BookTrack</span>
+            </div>
             <ul class="flex space-x-6 items-center">
-                <li><a href="home.html" class="hover:text-lime-800 transition">Home</a></li>
-                <li><a href="book.html" class="hover:text-lime-800 transition">Books</a></li>
-                <li><a href="manage.html" class="hover:text-lime-800 transition">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-lime-800 transition">Contact</a></li>
                 <li>
-                    <button onclick="logout()" class="bg-red-500 px-2 py-2 rounded-lg flex items-center  hover:bg-red-600 transition">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </button>
+                    <a href="#hero" class="font-[Poppins] text-xl text-[#FFFFFF] border-b-2 border-[#FFFFFF]">Home</a>
+                </li>
+                <li>
+                    <a href="book.html" class="font-[Poppins] text-xl hover:text-[#674636]">Books</a>
+                </li>
+                <li>
+                    <a href="manage.html" class="font-[Poppins] text-xl hover:text-[#674636]">Manage</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="font-[Poppins] text-xl hover:text-[#674636]">Contact</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <button onclick="logout()" class=" text-2xl hover:text-[#A31D1D] transition">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>                        
+                    </a>
+                    
                 </li>
             </ul>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="flex items-center justify-center min-h-screen text-center">
-        <div>
-            <h1 class="text-5xl font-bold text-[#FFF8E8]">Welcome to Our Library</h1>
-            <p class="mt-4 text-lg text-[#FFF8E8]">Explore a world of knowledge with our collection.</p>
+    
+    
+    <section id="hero" class="flex items-center justify-center min-h-screen text-center ">
+        <div class="mt-20 w-[90%]">
+            <h1 class="text-5xl font-bold text-white font-[Poppins]">Welcome to BookTrack</h1>
+            <p class="mt-4 text-lg text-white font-[Poppins]">
+                Efficiently manage and track books with ease. <br>
+                BookTrack helps you organize, locate, and monitor book availability in just a few clicks.
+            </p>   
+    
+            <div class="mt-6 flex justify-center">
+                <a href="#about" class="bg-[#FFF8E8] text-[#674636] text-xl font-semibold py-4 px-8 rounded-lg shadow-md hover:bg-[#674636] hover:text-[#FFF8E8] hover:border hover:border-[#FFF8E8] font-[Poppins] font-bold">
+                    About Us
+                </a>
+            </div>                  
         </div>
     </section>
-<!-- About Us Section -->
-<section id="about" class="container mx-auto mt-16 p-10 bg-white shadow-lg rounded-lg text-center max-w-4xl">
-    <h2 class="text-4xl font-bold text-gray-800">About Us</h2>
-    <p class="mt-6 text-gray-600 text-lg leading-relaxed">
-        <strong>BookTrack</strong> is an innovative and user-friendly library management system designed to simplify book tracking, lending, and returns. Whether for public libraries, schools, or private collections, BookTrack ensures seamless access and organization of books with an intuitive interface.
-    </p>
-    <p class="mt-4 text-gray-600 text-lg leading-relaxed">
-        Featuring automated due date reminders, book categorization, and secure user authentication, BookTrack enhances efficiency while reducing manual workload. It provides administrators with insightful analytics, helping them make informed decisions to improve library management.
-    </p>
-</section>
 
-<!-- Visit Us Section -->
-<section id="visit-us" class="container mx-auto mt-16 p-10 bg-[#FFF8E8] shadow-lg rounded-lg text-center max-w-4xl">
-    <h2 class="text-4xl font-bold text-gray-800">Visit Us</h2>
-    <img src="img/lib.jpg" alt="Library" class="mt-6 w-full max-w-2xl mx-auto rounded-lg shadow-md">
-    <p class="mt-6 text-gray-700 text-lg leading-relaxed">
-        Our library is located in the heart of the city, offering a peaceful and welcoming environment for all book lovers. Explore our vast collection of books and resources in a serene atmosphere.
-    </p>
-    <div class="mt-6 flex flex-col space-y-4 items-center">
-        <div class="flex items-center space-x-4">
-            <i class="fas fa-map-marker-alt text-red-500 text-2xl"></i>
-            <p class="text-gray-700 text-lg">123 Library Street, Cityville, United States</p>
+    <section id="about" class="w-full bg-[#FFF8E8] text-[#674636] font-[Poppins] py-12">
+        <div class="w-full flex flex-col md:flex-row items-center justify-between px-10 md:px-20 py-20 space-y-16 md:space-y-0">
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h2 class="text-5xl font-bold text-center">About Us</h2>
+                <p class="mt-6 text-xl leading-relaxed">
+                    <strong>BookTrack</strong> is an innovative and user-friendly library management system designed to simplify book tracking, lending, and returns. Whether for public libraries, schools, or private collections, BookTrack ensures seamless access and organization of books with an intuitive interface.
+                </p>
+                <p class="mt-4 text-xl leading-relaxed">
+                    Featuring automated due date reminders, book categorization, and secure user authentication, BookTrack enhances efficiency while reducing manual workload. It provides administrators with insightful analytics, helping them make informed decisions to improve library management.
+                </p>
+            </div>
+
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="bg-white bg-opacity-50 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+                    <img src="img/john doe.jpg" alt="Owner" class="w-40 h-40 object-cover rounded-full shadow-md mx-auto">
+                    <p class="mt-6 text-2xl font-semibold">John Doe</p>
+                    <p class="text-xl">Founder & CEO</p>
+                    <p class="mt-4 text-l leading-relaxed">
+                        With a passion for books and technology, John Doe founded BookTrack to revolutionize how libraries operate. His vision is to create a seamless, modern library management system that benefits both readers and administrators.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="flex items-center space-x-4">
-            <i class="fas fa-phone text-blue-500 text-2xl"></i>
-            <p class="text-gray-700 text-lg">+1 (234) 567-890</p>
+    </section>
+
+    <section id="visit-us" class="w-full bg-[#FFF8E8] text-[#674636] font-[Poppins] py-12">
+        <div class="text-center px-6 md:px-16">
+            <h2 class="text-3xl font-bold">Visit Us</h2>
+            <img src="img/lib.jpg" alt="Library" class="mt-4 w-full max-w-md mx-auto rounded-lg shadow-lg"> 
+            <p class="mt-4 text-lg leading-relaxed">
+                Our library is located in the heart of the city, offering a peaceful and welcoming environment for all book lovers.
+            </p>
+            <div class="mt-4 flex flex-col space-y-2 items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt text-[#AAB396] text-2xl"></i>
+                    <p class="text-lg">123 Library Street, Cityville, United States</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-phone text-[#AAB396] text-2xl"></i>
+                    <p class="text-lg">+1 (234) 567-890</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    
 
-
-    <!-- Footer -->
-    <footer class="bg-[#AAB396] text-white text-center py-4 mt-10">
+    <footer class="bg-[#AAB396] text-white text-center py-4">
         <p class="text-lg">&copy; 2025 Library System. All Rights Reserved.</p>
     </footer>
 
-    <!-- Logout Script -->
     <script src="logout.js"></script>
 
 </body>

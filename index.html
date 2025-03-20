@@ -12,43 +12,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sigmar&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('img/bghome.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            url('img/bghome.jpg');          
+            background-size: cover;  
+            background-position: center; 
+            background-repeat: no-repeat;
         }
     </style>
 </head>
 <body class="flex justify-center items-center h-screen bg-black bg-opacity-60 px-4">
 
-    <!-- Main Container -->
-    <div class="bg-[#F4EDE4] p-10 rounded-lg shadow-2xl max-w-2xl w-full text-center">
+    <div class=" text-white p-10 rounded-lg shadow-2xl max-w-2xl w-full text-center">
         
-        <!-- Welcome Section -->
         <div class="mb-10">
-            <h1 class="text-5xl font-bold text-[#674636] font-[Poppins] drop-shadow-xl">
+            <h1 class="text-5xl font-bold  font-[Poppins] drop-shadow-xl">
                 Welcome to BookTrack
             </h1>
-            <p class="mt-4 text-lg text-gray-800 font-[Poppins] max-w-xl mx-auto drop-shadow-lg">
+            <p class="mt-4 text-lg  font-[Poppins] max-w-xl mx-auto drop-shadow-lg">
                 BookTrack streamlines book organization and tracking.<br>
                 Please sign in to take control of your library with ease.
             </p>
         </div>
 
-        <!-- Login Form -->
-        <div class="bg-[#f3e8e1] p-8 rounded-lg shadow-lg w-96 mx-auto border-2 border-[#d6bfb1]">
-            <h2 class="text-2xl font-bold text-center mb-6 text-[#4d3225]">Admin Login</h2>
+        <div class="bg-white bg-opacity-70 p-8 rounded-lg shadow-lg w-96 mx-auto ">
+            <h2 class="text-2xl font-bold text-center mb-6 text-[#674636] font-[Poppins]">Admin Login</h2>
             <form id="loginForm">
                 <div class="mb-4">
-                    <label class="block text-[#4d3225] font-semibold mb-2 text-left">Username</label>
+                    <label class="block text-[#674636] font-semibold mb-2 text-left font-[Poppins]">Username</label>
                     <input type="text" id="username" class="w-full p-3 border border-[#b89c8a] rounded bg-[#f7f3f0] text-[#4d3225] focus:ring-2 focus:ring-[#674636]" placeholder="Enter username">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-[#4d3225] font-semibold mb-2 text-left">Password</label>
+                    <label class="block text-[#674636] font-semibold mb-2 text-left font-[Poppins]">Password</label>
                     <input type="password" id="password" class="w-full p-3 border border-[#b89c8a] rounded bg-[#f7f3f0] text-[#4d3225] focus:ring-2 focus:ring-[#674636]" placeholder="Enter password">
                 </div>
                 <button type="submit" class="w-full bg-[#674636] text-white py-2 rounded-lg transition duration-300 hover:bg-[#4d3225] hover:text-white border-2 border-[#674636] font-semibold">
                     Login
                 </button>
-                <p id="errorMessage" class="text-red-500 text-center mt-3 hidden">Invalid username or password.</p>
+                <p id="errorMessage" class="text-red-500 text-center mt-3 hidden font-[Poppins]">Invalid username or password.</p>
             </form>
         </div>
         

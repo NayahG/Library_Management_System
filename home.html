@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        #hero{
+        #hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/bghome.jpg');
             background-size: cover;  
             background-position: center; 
@@ -18,30 +19,68 @@
 
     <!-- Navbar -->
     <nav class="bg-[#AAB396] text-white py-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="index.html">
-                <h1 class="text-2xl font-bold">Library System</h1>
-            </a>
-            <ul class="flex space-x-6">
-                <li><a href="home.html" class="hover:text-yellow-300">Home</a></li>
-                <li><a href="book.html" class="hover:text-yellow-300">Books</a></li>
-                <li><a href="manage.html" class="hover:text-yellow-300 ">Manage</a></li>
-                <li><a href="contact.html" class="hover:text-yellow-300 ">Contact</a></li>
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="index.html" class="text-2xl font-bold hover:text-yellow-300 transition">Library System</a>
+            <ul class="flex space-x-6 items-center">
+                <li><a href="home.html" class="hover:text-lime-700 transition">Home</a></li>
+                <li><a href="book.html" class="hover:text-lime-700 transition">Books</a></li>
+                <li><a href="manage.html" class="hover:text-lime-700 transition">Manage</a></li>
+                <li><a href="contact.html" class="hover:text-lime-700 transition">Contact</a></li>
+                <li>
+                    <button onclick="logout()" class="bg-red-500 px-2 py-2 rounded-lg flex items-center  hover:bg-red-600 transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
-    
+
+    <!-- Hero Section -->
     <section id="hero" class="flex items-center justify-center min-h-screen text-center">
         <div>
             <h1 class="text-5xl font-bold text-[#FFF8E8]">Welcome to Our Library</h1>
             <p class="mt-4 text-lg text-[#FFF8E8]">Explore a world of knowledge with our collection.</p>
         </div>
     </section>
+<!-- About Us Section -->
+<section id="about" class="container mx-auto mt-16 p-10 bg-white shadow-lg rounded-lg text-center max-w-4xl">
+    <h2 class="text-4xl font-bold text-gray-800">About Us</h2>
+    <p class="mt-6 text-gray-600 text-lg leading-relaxed">
+        <strong>BookTrack</strong> is an innovative and user-friendly library management system designed to simplify book tracking, lending, and returns. Whether for public libraries, schools, or private collections, BookTrack ensures seamless access and organization of books with an intuitive interface.
+    </p>
+    <p class="mt-4 text-gray-600 text-lg leading-relaxed">
+        Featuring automated due date reminders, book categorization, and secure user authentication, BookTrack enhances efficiency while reducing manual workload. It provides administrators with insightful analytics, helping them make informed decisions to improve library management.
+    </p>
+</section>
 
-    <section id="about" class="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-3xl font-semibold text-gray-800">About Us</h2>
-        <p class="mt-4 text-gray-600">Our library provides a diverse collection of books, ensuring accessibility and convenience for all readers.</p>
-    </section>
+<!-- Visit Us Section -->
+<section id="visit-us" class="container mx-auto mt-16 p-10 bg-[#FFF8E8] shadow-lg rounded-lg text-center max-w-4xl">
+    <h2 class="text-4xl font-bold text-gray-800">Visit Us</h2>
+    <img src="img/lib.jpg" alt="Library" class="mt-6 w-full max-w-2xl mx-auto rounded-lg shadow-md">
+    <p class="mt-6 text-gray-700 text-lg leading-relaxed">
+        Our library is located in the heart of the city, offering a peaceful and welcoming environment for all book lovers. Explore our vast collection of books and resources in a serene atmosphere.
+    </p>
+    <div class="mt-6 flex flex-col space-y-4 items-center">
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-map-marker-alt text-red-500 text-2xl"></i>
+            <p class="text-gray-700 text-lg">123 Library Street, Cityville, United States</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-phone text-blue-500 text-2xl"></i>
+            <p class="text-gray-700 text-lg">+1 (234) 567-890</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#AAB396] text-white text-center py-4 mt-10">
+        <p class="text-lg">&copy; 2025 Library System. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Logout Script -->
+    <script src="logout.js"></script>
 
 </body>
 </html>

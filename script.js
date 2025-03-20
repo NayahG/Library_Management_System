@@ -41,7 +41,7 @@ bookForm.addEventListener("submit", function (e) {
     const status = document.getElementById("status").value;
     const imageFile = document.getElementById("image").files[0];
 
-    if (!title || !author || !isbn || !description) {
+    if (!title || !author || !isbn) {
         Swal.fire("Error", "Please fill in all fields.", "error");
         return;
     }
@@ -79,10 +79,10 @@ function loadBooks() {
                 <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
                 <h3 class="text-lg font-semibold">${book.title}</h3>
                 <p class="text-gray-700">${book.author}</p>
-                <p class="text-sm text-gray-600 mb-2">${book.description}</p>
                 <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
                 <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-            </div>`;
+            </div>
+        `;
     });
 }
 
@@ -148,7 +148,7 @@ function deleteBook(index) {
     });
 }
 
-// Search Books in Real-Time
+// Search Books in Real-Time (Only Title & Author)
 function searchBooks() {
     const query = searchInput.value.toLowerCase();
     const books = getBooks();
@@ -157,9 +157,7 @@ function searchBooks() {
     books
         .filter(book => 
             book.title.toLowerCase().includes(query) ||
-            book.author.toLowerCase().includes(query) ||
-            book.isbn.includes(query) ||
-            book.description.toLowerCase().includes(query)
+            book.author.toLowerCase().includes(query)
         )
         .forEach((book, index) => {
             booksContainer.innerHTML += `
@@ -167,10 +165,10 @@ function searchBooks() {
                     <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
                     <h3 class="text-lg font-semibold">${book.title}</h3>
                     <p class="text-gray-700">${book.author}</p>
-                    <p class="text-sm text-gray-600 mb-2">${book.description}</p>
                     <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
                     <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-                </div>`;
+                </div>
+            `;
         });
 }
 

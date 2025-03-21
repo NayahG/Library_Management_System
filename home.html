@@ -125,6 +125,13 @@
     </footer>
 
     <script src="logout.js"></script>
+    <script>
+        if (!sessionStorage.getItem("isLoggedIn")) {
+            window.location.href = "index.html";
+        }
+    </script>
+    
+    
 
 </body>
 </html>

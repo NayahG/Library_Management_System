@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sigmar&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
@@ -20,22 +20,22 @@
         }
     </style>
 </head>
-<body class="flex justify-center items-center h-screen bg-black bg-opacity-60 px-4">
+<body class="flex justify-center items-center min-h-screen bg-black bg-opacity-60 px-6 md:px-4">
 
-    <div class=" text-white p-10 rounded-lg shadow-2xl max-w-2xl w-full text-center">
-        
-        <div class="mb-10">
-            <h1 class="text-5xl font-bold  font-[Poppins] drop-shadow-xl">
-                Welcome to BookTrack
-            </h1>
-            <p class="mt-4 text-lg  font-[Poppins] max-w-xl mx-auto drop-shadow-lg">
-                BookTrack streamlines book organization and tracking.<br>
-                Please sign in to take control of your library with ease.
-            </p>
-        </div>
+    <div class="mb-8 text-white">
+        <h1 class="text-4xl sm:text-5xl font-bold font-[Poppins] drop-shadow-xl">
+            Welcome to BookTrack
+        </h1>
+        <p class="mt-4 text-base sm:text-lg font-[Poppins] max-w-xl mx-auto drop-shadow-lg">
+            BookTrack streamlines book organization and tracking.
+            Please sign in to take control of your library with ease.
+        </p>
+    </div>
 
-        <div class="bg-white bg-opacity-70 p-8 rounded-lg shadow-lg w-96 mx-auto ">
-            <h2 class="text-2xl font-bold text-center mb-6 text-[#674636] font-[Poppins]">Admin Login</h2>
+    <div class="text-white p-6 sm:p-10 rounded-lg shadow-2xl max-w-lg w-full text-center">
+
+        <div class="bg-white bg-opacity-70 p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-md mx-auto">
+            <h2 class="text-xl sm:text-2xl font-bold text-center mb-6 text-[#674636] font-[Poppins]">Admin Login</h2>
             <form id="loginForm">
                 <div class="mb-4">
                     <label class="block text-[#674636] font-semibold mb-2 text-left font-[Poppins]">Username</label>

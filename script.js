@@ -1,3 +1,5 @@
+// manage.js
+
 document.addEventListener("DOMContentLoaded", () => {
     loadBooks();
 });
@@ -19,18 +21,15 @@ function saveBooks(books) {
     loadBooks();
 }
 
-// Open Add Modal
 function openAddModal() {
     addModal.classList.remove("hidden");
 }
 
-// Close Add Modal
 function closeAddModal() {
     addModal.classList.add("hidden");
     bookForm.reset();
 }
 
-// Submit New Book
 bookForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -68,7 +67,6 @@ function addBook(title, author, isbn, description, status, imageData) {
     saveBooks(books);
 }
 
-// Load Books and Display in Container
 function loadBooks() {
     booksContainer.innerHTML = "";
     const books = getBooks();
@@ -79,22 +77,20 @@ function loadBooks() {
                 <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
                 <h3 class="text-lg font-semibold">${book.title}</h3>
                 <p class="text-gray-700">${book.author}</p>
-                <button onclick="openEditModal(${index})" 
-                    class="mt-2 bg-[#706D54] text-white px-4 py-2 rounded transition hover:bg-white hover:text-[#706D54] hover:border hover:border-[#706D54]">
+                <p class="text-sm font-semibold ${book.status === 'Available' ? 'text-green-600' : 'text-red-600'}">
+                    ${book.status}
+                </p>
+                <button onclick="openEditModal(${index})" class="mt-2 bg-[#706D54] text-white px-4 py-2 rounded transition hover:bg-white hover:text-[#706D54] hover:border hover:border-[#706D54]">
                     Edit
                 </button>
-
-                <button onclick="deleteBook(${index})" 
-                    class="mt-2 bg-[#A31D1D] text-white px-4 py-2 rounded transition hover:bg-white hover:text-[#A31D1D] hover:border hover:border-[#A31D1D]">
+                <button onclick="deleteBook(${index})" class="mt-2 bg-[#A31D1D] text-white px-4 py-2 rounded transition hover:bg-white hover:text-[#A31D1D] hover:border hover:border-[#A31D1D]">
                     Delete
                 </button>
-
             </div>
         `;
     });
 }
 
-// Open Edit Modal
 function openEditModal(index) {
     const books = getBooks();
     const book = books[index];
@@ -109,7 +105,6 @@ function openEditModal(index) {
     editModal.classList.remove("hidden");
 }
 
-// Update Book
 function updateBook() {
     const books = getBooks();
 
@@ -131,12 +126,10 @@ function updateBook() {
     });
 }
 
-// Close Edit Modal
 function closeModal() {
     editModal.classList.add("hidden");
 }
 
-// Delete Book with Confirmation
 function deleteBook(index) {
     Swal.fire({
         title: "Are you sure?",
@@ -156,31 +149,24 @@ function deleteBook(index) {
     });
 }
 
-// Search Books in Real-Time (Only Title & Author)
 function searchBooks() {
     const query = searchInput.value.toLowerCase();
     const books = getBooks();
     booksContainer.innerHTML = "";
 
-    books
-        .filter(book => 
-            book.title.toLowerCase().includes(query) ||
-            book.author.toLowerCase().includes(query)
-        )
-        .forEach((book, index) => {
-            booksContainer.innerHTML += `
-                <div class="p-4 border rounded-lg shadow-md bg-gray-200">
-                    <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
-                    <h3 class="text-lg font-semibold">${book.title}</h3>
-                    <p class="text-gray-700">${book.author}</p>
-                    <button onclick="openEditModal(${index})" class="mt-2 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700">Edit</button>
-                    <button onclick="deleteBook(${index})" class="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Delete</button>
-                </div>
-            `;
-        });
-}
-
-// Go Back
-function goBack() {
-    window.history.back();
+    books.filter(book => 
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query)
+    ).forEach((book, index) => {
+        booksContainer.innerHTML += `
+            <div class="p-4 border rounded-lg shadow-md bg-gray-200">
+                <img src="${book.image || 'https://via.placeholder.com/150'}" class="w-full h-40 object-cover mb-2 rounded">
+                <h3 class="text-lg font-semibold">${book.title}</h3>
+                <p class="text-gray-700">${book.author}</p>
+                <p class="text-sm font-semibold ${book.status === 'Available' ? 'text-green-600' : 'text-red-600'}">
+                    ${book.status}
+                </p>
+            </div>
+        `;
+    });
 }

@@ -90,5 +90,10 @@
     </footer>
 
     <script src="book.js"></script>
+    <script>
+        if (!sessionStorage.getItem("isLoggedIn")) {
+            window.location.href = "index.html";
+        }
+    </script>
 </body>
 </html>
